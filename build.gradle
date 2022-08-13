@@ -16,4 +16,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    exclude("ds/list/*Base.class")
 }
