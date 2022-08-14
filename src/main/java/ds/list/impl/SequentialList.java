@@ -2,12 +2,14 @@ package ds.list.impl;
 
 import ds.list.IList;
 
+import java.util.RandomAccess;
+
 /**
  * 顺序表实现
  * @param <T> value type
  */
 @SuppressWarnings("unchecked")
-public class SequentialList<T> implements IList<T> {
+public class SequentialList<T> implements IList<T>, RandomAccess {
     private final int capacity; // 线性表的容量
     private final Object[] elements;
     private int length; // 当前的表长
@@ -63,6 +65,7 @@ public class SequentialList<T> implements IList<T> {
         final T res = (T) elements[idx];
         for (int i = idx; i < length-1; i++)
             elements[i] = elements[i+1];
+        length--;
         return res;
     }
 
