@@ -36,6 +36,12 @@ public class TestIntListBase {
         for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
             assertEquals(instance.at(i), testElements[i]);
         }
+        assertThrowsExactly(RuntimeException.class, () -> {
+            instance.at(-1);
+        });
+        assertThrowsExactly(RuntimeException.class, () -> {
+            instance.at(instance.length());
+        });
         System.out.println("PASS!");
     }
 
