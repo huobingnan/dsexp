@@ -31,7 +31,7 @@ public class SequentialList<T> extends AbstractList<T> implements RandomAccess {
 
     private void checkIndexValidation(int idx) {
         if (idx >= length || idx < 0)
-            throw new IllegalArgumentException("index out of bound");
+            throw new RuntimeException("index out of bound");
     }
 
     // 用于保障顺序表的容量，当容量不足时会触发扩容操作
