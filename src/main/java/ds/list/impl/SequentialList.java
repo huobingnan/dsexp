@@ -3,6 +3,7 @@ package ds.list.impl;
 import ds.list.AbstractList;
 import ds.list.IList;
 
+import java.util.Objects;
 import java.util.RandomAccess;
 
 /**
@@ -58,9 +59,10 @@ public class SequentialList<T> extends AbstractList<T> implements RandomAccess {
 
     @Override
     public int indexOf(T value) {
+        if (isEmpty() || value == null) return -1;
         int res = -1;
         for (int i = 0; i < length; i++)
-            if (elements[i].equals(value)) return i;
+            if (Objects.equals(elements[i], value)) return i;
         return res;
     }
 
@@ -80,6 +82,12 @@ public class SequentialList<T> extends AbstractList<T> implements RandomAccess {
     public T at(int idx) {
         checkIndexValidation(idx);
         return (T) elements[idx];
+    }
+
+    @Override
+    public void set(int idx, T value) {
+        checkIndexValidation(idx);
+        elements[idx] = value;
     }
 
     @Override

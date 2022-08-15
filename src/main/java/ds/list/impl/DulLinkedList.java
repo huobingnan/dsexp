@@ -73,6 +73,14 @@ public class DulLinkedList<T> extends AbstractList<T> {
     }
 
     @Override
+    public void set(int idx, T value) {
+        if (idx < 0 || idx >= length) throw new RuntimeException("Index out of bound");
+        DulNode<T> ptr = head;
+        for (int i = 0; i < idx; i++, ptr = ptr.next);
+        ptr.value = value;
+    }
+
+    @Override
     public T delete(int idx) {
         if (idx < 0 || idx >= length) throw new RuntimeException("Index out of bound");
         final T res;;
