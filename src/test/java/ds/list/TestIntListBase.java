@@ -117,9 +117,22 @@ public class TestIntListBase {
     }
 
     @Test
-    public void test_list_delete() {
+    public void test_list_head_delete() {
         final IList<Integer> instance = listSupplier.get();
-        System.out.println("==Test IList#delete==");
+        System.out.println("==Test IList#delete (head)==");
+        System.out.println("    implementation: " + instance.getClass().getName());
+        for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++)
+            instance.pushBack(testElements[i]);
+        for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
+            assertEquals(testElements[i], instance.delete(0));
+        }
+        System.out.println("PASS!");
+    }
+
+    @Test
+    public void test_list_mixed_delete() {
+        final IList<Integer> instance = listSupplier.get();
+        System.out.println("==Test IList#delete (mixed) ==");
         System.out.println("    implementation: " + instance.getClass().getName());
         for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
             instance.pushBack(testElements[i]);
