@@ -152,4 +152,28 @@ public class TestIntListBase {
         assertEquals(NUMBER_OF_TEST_ELEMENT - 8, instance.length());
         System.out.println("PASS!");
     }
+
+    @Test
+    public void test_list_set_item() {
+        final IList<Integer> instance = listSupplier.get();
+        System.out.println("==Test list#set==");
+        System.out.println("    implementation: " + instance.getClass().getName());
+        for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
+           instance.pushBack(testElements[i]);
+        }
+        assertThrowsExactly(RuntimeException.class, () -> {
+            instance.set(-1, 12);
+        });
+        assertThrowsExactly(RuntimeException.class, () -> {
+            instance.set(instance.length(), 11);
+        });
+        for (int i = 0, len = instance.length(); i < len; i++) {
+            if (i % 2 == 0) instance.set(i, 0);
+            else instance.set(i, 1);
+        }
+        for (int i = 0, len = instance.length(); i < len; i++) {
+            if (i % 2 == 0) assertEquals(0, instance.at(i));
+            else assertEquals(1, instance.at(i));
+        }
+    }
 }

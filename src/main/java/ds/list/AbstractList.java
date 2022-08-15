@@ -2,6 +2,9 @@ package ds.list;
 
 public abstract class AbstractList<T> implements IList<T> {
     @Override
+    public void set(int idx, T value) { throw new UnsupportedOperationException("'set' is not supported"); }
+
+    @Override
     public boolean isEmpty() { throw new UnsupportedOperationException("'isEmpty' is not supported"); }
 
     @Override

@@ -27,6 +27,7 @@ public interface IList<T> {
 
     /**
      * 在线性表的指定位置插入一个元素，若插入位置不合法则会抛出RuntimeException.
+     *  insert -> insertBefore，在给定索引位置前插入一个元素
      * @param idx 插入点
      * @param value 元素
      */
@@ -44,6 +45,13 @@ public interface IList<T> {
      * @return 元素
      */
     public T at(int idx);
+
+    /**
+     * 在指定索引处设置新的值
+     * @param idx
+     * @param value
+     */
+    public void set(int idx, T value);
 
     /**
      * 删除线性表中指定索引位置的元素，并返回该元素，若元素值不合法则抛出RuntimeException
