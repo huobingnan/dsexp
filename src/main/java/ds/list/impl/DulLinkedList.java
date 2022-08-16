@@ -100,6 +100,20 @@ public class DulLinkedList<T> extends AbstractList<T> {
         return res;
     }
 
+    @Override
+    public void reverse() {
+        // 双链表的反转
+        DulNode<T> ptr = head, prev = null, next = null;
+        for (; ptr != null; ) {
+            next = ptr.next;
+            ptr.next = prev;
+            if (prev != null) prev.prior = ptr; // NOTICE： 更新前驱引用域
+            prev = ptr;
+            ptr = next;
+        }
+        head = prev; // 更新头引用
+    }
+
     private static class DulNode<T> {
         T          value; // 数据域
         DulNode<T> next;  // 后继节点域

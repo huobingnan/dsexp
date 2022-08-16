@@ -91,6 +91,19 @@ public class SinglyCircuitLinkedList<T> extends AbstractList<T> {
         ptr.value = value;
     }
 
+    @Override
+    public void reverse() {
+        if (tail == null) return; // 空表直接不处理
+        Node<T> ptr = tail.next, prev = tail, next = null;
+        for (;;) {
+            next = ptr.next;
+            ptr.next = prev;
+            if (ptr == tail) break;
+            prev = ptr; ptr = next;
+        }
+        tail = next;
+    }
+
     private static final class Node<T> {
         T       value; // 数据域
         Node<T> next;  // 指针域

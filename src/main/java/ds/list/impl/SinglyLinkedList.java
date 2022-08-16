@@ -76,6 +76,23 @@ public class SinglyLinkedList<T> extends AbstractList<T> {
         return -1;
     }
 
+    /**
+     * 链表的反转的有两种做法：
+     *  1. 只交换数据域 -> 实现简单
+     *  2. 交换整个结点 -> 实现复杂 ✅
+     */
+    @Override
+    public void reverse() {
+        // ptr初始指向链表的第一个结点，prev指向当前节点的前驱，next指向当前结点的后继
+        Node<T> ptr = headNode.next, prev = null, next = null;
+        while (ptr != null) {
+            next = ptr.next;         // 记录当前结点的下一个结点
+            ptr.next = prev;         // 反转 -> 当前结点指向前驱结点
+            prev = ptr; ptr = next;  // 循环迭代整个量表
+        }
+        headNode.next = prev;        // 更新头结点
+    }
+
     private static class Node<T> {
         Node<T> next;  //  指向下一个结点
         T       value; // 值域

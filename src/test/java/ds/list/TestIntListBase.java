@@ -196,4 +196,39 @@ public class TestIntListBase {
         });
         System.out.println("PASS!");
     }
+
+    @Test
+    public void test_list_reverse() {
+        final IList<Integer> instance = listSupplier.get();
+        System.out.println("==Test IList#reverse==");
+        System.out.println("    implementation: " + instance.getClass().getName());
+        timeIt(() -> {
+            for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) instance.pushBack(testElements[i]);
+            instance.reverse(); instance.reverse(); // 两次反转后应与原表一致
+            for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
+                assertEquals(testElements[i], instance.at(i));
+            }
+        });
+        System.out.println("PASS!");
+    }
+
+    @Test
+    public void test_list_reverse_boundary_case() {
+        final IList<Integer> instance = listSupplier.get();
+        System.out.println("==Test #IList#reverse (boundary case)==");
+        System.out.println("    implementation: " + instance.getClass().getName());
+        timeIt(() -> {
+            instance.reverse(); // empty list
+            assertThrowsExactly(RuntimeException.class, () -> {
+                instance.at(0);
+            });
+            instance.pushBack(1); // single element
+            instance.reverse();
+            assertEquals(1, instance.at(0));
+            instance.pushBack(2);
+            instance.reverse();
+            assertEquals(2, instance.at(0));
+            assertEquals(1, instance.at(1));
+        });
+    }
 }

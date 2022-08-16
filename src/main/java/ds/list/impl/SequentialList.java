@@ -104,4 +104,14 @@ public class SequentialList<T> extends AbstractList<T> implements RandomAccess {
     public void include(IList<T> another) {
         for (int i = 0; i < another.length(); i++) { pushBack(another.at(i)); }
     }
+
+    @Override
+    public void reverse() {
+        // 采用双指针法： 实现顺序表反转
+        for (int i = 0, j = length-1; i < j; i++, j--) {
+            Object temp = elements[i];
+            elements[i] = elements[j];
+            elements[j] = temp;
+        }
+    }
 }

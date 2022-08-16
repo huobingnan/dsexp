@@ -27,4 +27,7 @@ public abstract class AbstractList<T> implements IList<T> {
 
     @Override
     public void include(IList<T> another) { throw new UnsupportedOperationException("'include' is not supported"); }
+
+    @Override
+    public void reverse() { throw new UnsupportedOperationException("'reverse' is not supported"); }
 }

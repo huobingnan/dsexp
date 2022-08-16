@@ -65,4 +65,9 @@ public interface IList<T> {
      * @param another
      */
     public void include(IList<T> another);
+
+    /**
+     * 将列表反转
+     */
+    public void reverse();
 }
