@@ -16,5 +16,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    exclude("ds/list/*Base.class")
+    exclude("ds/**/*Base.class") // 排除掉对于测试基类的运行
 }

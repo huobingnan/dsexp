@@ -12,6 +12,8 @@ public class LinkedStack<T> implements IStack<T> {
     private Node<T> top;    // 链式栈的头结点的引用
     private int     length; // 链式栈的长度
 
+    public LinkedStack() { top = null; length = 0;}
+
     @Override
     public int length() { return length; }
 
@@ -21,7 +23,7 @@ public class LinkedStack<T> implements IStack<T> {
     @Override
     public void push(T value) {
         final Node<T> node = new Node<>(value, null);
-        if (top != null) top.next = node;
+        if (top != null) node.next = top;
         top = node; length++;
     }
 
