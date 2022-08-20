@@ -31,7 +31,7 @@ public class TestIntListBase {
     public void test_list_push_back() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#pushBack ==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(10000, () -> {
             for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
                 instance.pushBack(testElements[i]);
@@ -54,7 +54,7 @@ public class TestIntListBase {
     public void test_list_head_insert() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#insert (head)==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
                 instance.insert(0, testElements[i]);
@@ -72,7 +72,7 @@ public class TestIntListBase {
 
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#insert (middle)==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             instance.pushBack(1); instance.pushBack(2);
             instance.pushBack(3); instance.pushBack(4);
@@ -91,7 +91,7 @@ public class TestIntListBase {
     public void test_list_mixed_insert() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#insert (mixed)==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             instance.pushBack(1); instance.pushBack(2);
             instance.pushBack(3); instance.pushBack(4);
@@ -116,7 +116,7 @@ public class TestIntListBase {
     public void test_list_index_of() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#indexOf==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
                 instance.pushBack(testElements[i]);
@@ -133,7 +133,7 @@ public class TestIntListBase {
     public void test_list_head_delete() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#delete (head)==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++)
                 instance.pushBack(testElements[i]);
@@ -148,7 +148,7 @@ public class TestIntListBase {
     public void test_list_mixed_delete() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#delete (mixed)==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
                 instance.pushBack(testElements[i]);
@@ -174,7 +174,7 @@ public class TestIntListBase {
     public void test_list_set_item() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test list#set==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) {
                 instance.pushBack(testElements[i]);
@@ -201,7 +201,7 @@ public class TestIntListBase {
     public void test_list_reverse() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test IList#reverse==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             for (int i = 0; i < NUMBER_OF_TEST_ELEMENT; i++) instance.pushBack(testElements[i]);
             instance.reverse(); instance.reverse(); // 两次反转后应与原表一致
@@ -216,7 +216,7 @@ public class TestIntListBase {
     public void test_list_reverse_boundary_case() {
         final IList<Integer> instance = listSupplier.get();
         System.out.println("==Test #IList#reverse (boundary case)==");
-        System.out.println("    implementation: " + instance.getClass().getName());
+        System.out.println("Implementation: " + instance.getClass().getName());
         timeIt(() -> {
             instance.reverse(); // empty list
             assertThrowsExactly(RuntimeException.class, () -> {
