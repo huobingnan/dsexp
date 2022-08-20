@@ -1,10 +1,12 @@
 package ds.list.impl;
 
+import ds.annotation.Specific;
 import ds.list.AbstractList;
 import ds.list.IList;
 
 import java.util.Objects;
 import java.util.RandomAccess;
+import java.util.function.Predicate;
 
 /**
  * 顺序表实现
@@ -22,12 +24,19 @@ public class SequentialList<T> extends AbstractList<T> implements RandomAccess {
        elements = EMPTY;
        length = 0;
     }
+
     public SequentialList(int cap) {
         // check params
         if (cap <= 0) throw new IllegalArgumentException("capacity can't be zero or negative number");
         length = 0;
         capacity = cap;
         elements = new Object[cap];
+    }
+
+    public SequentialList(Object[] init) {
+        elements = init;
+        length   = init.length;
+        capacity = init.length;
     }
 
     private void checkIndexValidation(int idx) {
@@ -113,5 +122,22 @@ public class SequentialList<T> extends AbstractList<T> implements RandomAccess {
             elements[i] = elements[j];
             elements[j] = temp;
         }
+    }
+
+    /**
+     * 删除顺序表中满足断言条件的元素
+     *  see also => 王道/顺序表章节/综合应用题/
+     * @param predicate 断言条件
+     */
+    @Specific
+    public void removeIf(Predicate<T> predicate) {
+        int k = 0;
+        for (int i = 0; i < length; i++) {
+            if (predicate.test((T)elements[i])) k++;
+            else elements[i-k] = elements[i];
+        }
+        // 让GC可以回收这部分内存占用
+        for (int i = length-k; i < length; i++) elements[i] = null;
+        length = length-k;
     }
 }

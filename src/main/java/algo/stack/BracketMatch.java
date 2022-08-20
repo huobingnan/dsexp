@@ -1,4 +1,4 @@
-package ds.algo;
+package algo.stack;
 
 import ds.stack.IStack;
 import ds.stack.impl.LinkedStack;
