@@ -1,6 +1,7 @@
 package ds.list.impl;
 
 import ds.annotation.Experimental;
+import ds.annotation.Specific;
 import ds.list.AbstractList;
 
 import java.util.Objects;
@@ -93,9 +94,12 @@ public class SinglyLinkedList<T> extends AbstractList<T> {
         headNode.next = prev;        // 更新头结点
     }
 
-    private static class Node<T> {
-        Node<T> next;  //  指向下一个结点
-        T       value; // 值域
+    @Specific
+    public Node<T> firstNode() { return headNode.next; }
+
+    public static class Node<T> {
+        public Node<T> next;  //  指向下一个结点
+        public T       value; // 值域
         public Node(Node<T> next, T value) {
             this.next = next;
             this.value = value;
