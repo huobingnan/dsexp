@@ -29,7 +29,6 @@ public class CircularQueueTest {
         });
 
         assertEquals(9, strQue.size());
-
         IntStream.range(0, 9).mapToObj(String::valueOf).forEach(elem -> {
             assertEquals(elem, strQue.dequeue());
         });
